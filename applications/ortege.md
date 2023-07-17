@@ -138,14 +138,14 @@ In summary, while there is still work to be done, we are proud of the progress w
 ### Overview
 - **Total Estimated Duration:** 5 months
 - **Full-Time Equivalent (FTE):**  4 FTE
-- **Total Costs:** $220,000
+- **Total Costs:** $225,000
 
 ### Milestone 1 Ink! Smart Contracts
 We will begin by developing smart contracts in the ink! language. These contracts will form the backbone of our protocol, enabling the core functionality of cross-chain communication. We will leverage the design principles and specifications provided by Hyperlane to ensure our contracts are robust, secure, and efficient. This will involve creating contracts for managing the protocol's state, handling message routing, and facilitating the transfer of value across chains.
 
 - **Estimated duration:** 2 months
 - **FTE:**  2
-- **Costs:** 50,000 USD
+- **Costs:** 75,000 USD
 
 | Number | Deliverable | Specification |
 | -----: | ----------- | ------------- |
@@ -153,37 +153,56 @@ We will begin by developing smart contracts in the ink! language. These contract
 | **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can query, call or post an interchain message. |
 | **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
 | **0d.** | Docker | We will provide a Dockerfile(s) that can be used to test all the functionality delivered with this milestone. |
-| 0e. | Article | We will publish an **article**/workshop that explains [...] (what was done/achieved as part of the grant). |
-| 1. | Substrate module: X | We will create a Substrate module that will... (Please list the functionality that will be implemented for the first milestone. You can refer to details provided in previous sections.) |
-| 2. | Substrate module: Y | The Y Substrate module will... |
-| 3. | Substrate module: Z | The Z Substrate module will... |
-| 4. | Substrate chain | Modules X, Y & Z of our custom chain will interact in such a way... (Please describe the deliverable here as detailed as possible) |
-| 5. | Library: ABC | We will deliver a JS library that will implement the functionality described under "ABC Library" |
-| 6. | Smart contracts: ... | We will deliver a set of ink! smart contracts that will...
+| 0e. | Article | We will publish an **article** that explains all the smart contracts developed as well as how to interact with them |
+| 1. | Smart contract: Message | The message is the core data structure used by the Ortege protocol. It is a packed data structure that contains all the information needed to route a message from one domain to another. |
+| 2. | Smart contract: Mailbox | The mailbox is the entrypoint for developers to send and receive messages from. |
+| 3. | Smart contract: Interchain Security Module | Interchain security modules are used to verify messages before they are processed. |
+| 4. | Smart contract: Interchain Gas Paymaster | The gas paymaster is used to pay for the gas required in message processing on the destination chain. This is not strictly required if relayers are willing to subsidize message processing. |
 
 
 ### Milestone 2 Agents compatible with Substrate RPC endpoints
 
 - **Estimated Duration:** 2 month
 - **FTE:**  2
-- **Costs:** 50,000 USD
+- **Costs:** 75,000 USD
+
+| Number | Deliverable | Specification |
+| -----: | ----------- | ------------- |
+| **0a.** | License | Apache 2.0  |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how an agent can index messages as well as how a validator can sign a checkpoint and how relayers can relay messages. |
+| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
+| **0d.** | Docker | We will provide a Dockerfile(s) that can be used to test all the functionality delivered with this milestone. |
+| 0e. | Article | We will publish an **article** that explains all the agents developed as well as how to interact with them |
+| 1. | Agent: Message indexing | All agents must index messages from the origin mailbox. For ink! we'll need to emit events and then have the agents to get the the message content reliably and with consistent ordering. |
+| 2. | Agent: Validator | In addition to indexing messages dispatched from the mailbox, validators produce attestations for the messages they observe to be used on the destination chain for security. |
+| 3. | Agent: Relayer | In addition to indexing messages dispatched from the mailbox, relayers process messages on the destination chain. This requires building metadata that satisfies the message recipient's ISM (Interchain Security Module) verification requirements, and signing transactions that process the message on the destination mailbox. |
 
 ### Milestone 3 Warp Routes and Chainlink Integration
 
 - **Estimated Duration:** 3 month
 - **FTE:**  4
-- **Costs:** 120,000 USD
+- **Costs:** 75,000 USD
 
+| Number | Deliverable | Specification |
+| -----: | ----------- | ------------- |
+| **0a.** | License | Apache 2.0  |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can permissionlessly create their own Warp Route and how they can use an ink! smart contract to remotely read a Chainlink feed |
+| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
+| **0d.** | Docker | We will provide a Dockerfile(s) that can be used to test all the functionality delivered with this milestone. |
+| 0e. | Article | We will publish an **article** that explains all the smart contracts developed as well as how to interact with them |
+| 1. | Application: Warp Route | We will deploy a sample Warp Route for sending ETH from Ethereum to an ink! enabled chain. |
+| 2. | Smart contract: Chainlink AggregatorV3Interface | We will deploy an ink! smart contract that replicates the functionality of Chainlinks AggregatorV3Interface https://docs.chain.link/data-feeds/api-reference |
 
 ## Future Plans
 
-Please include here if you have a future plan after building this template in making it in to production.
+While our immediate focus is on enabling interoperability between ink! chains and Solidity-based chains, we are mindful of the broader landscape of blockchain platforms. Specifically, we recognize the growing importance and popularity of Cosmos and Solana in the blockchain ecosystem.
+
+However, it's important to note that the integration of Cosmos and Solana is currently out of scope for this particular phase of our project. This decision is primarily due to the fact that Hyperlane, whose codebase and architecture we heavily rely on, is still in the process of developing functionality for these platforms.
+
+That being said, we are closely monitoring Hyperlane's progress in this area. As soon as their Cosmos and Solana functionality is production-ready, we plan to extend our protocol to support these platforms as well. This will allow ink! chains to connect not only to Solidity chains, but also to Cosmos and Solana, further enhancing the interoperability and versatility of our protocol.
+
+In the long term, our vision is for Ortege to become a universal bridge between all major blockchain platforms, enabling seamless communication and value transfer across the entire blockchain ecosystem. We believe this will open up new possibilities for decentralized applications and contribute to the growth and maturation of the blockchain industry.
 
 ## Additional Information :heavy_plus_sign:
 
-**How did you hear about the Bounty Program?** Medium / Twitter / Element / Announcement by another team / personal recommendation / etc.
-
-Here you can also add any additional information that you think is relevant to this application but isn't part of it already, such as:
-
-- Work you have already done.
-- If there are any other teams who have already contributed (financially) to the project.
+**How did you hear about the Bounty Program?** Astar team mentioned it to us
