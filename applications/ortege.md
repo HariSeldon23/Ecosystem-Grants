@@ -140,6 +140,8 @@ In summary, while there is still work to be done, we are proud of the progress w
 - **Full-Time Equivalent (FTE):**  4 FTE
 - **Total Costs:** $225,000
 
+**Please note** We will work on Milestone 1 and 2 simultaneously. 
+
 ### Milestone 1 Ink! Smart Contracts
 We will begin by developing smart contracts in the ink! language. These contracts will form the backbone of our protocol, enabling the core functionality of cross-chain communication. We will leverage the design principles and specifications provided by Hyperlane to ensure our contracts are robust, secure, and efficient. This will involve creating contracts for managing the protocol's state, handling message routing, and facilitating the transfer of value across chains.
 
